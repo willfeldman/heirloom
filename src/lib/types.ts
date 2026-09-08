@@ -1,0 +1,60 @@
+export type Media = {
+  id: string;
+  name: string;
+  content_type: string;
+  size: number;
+  kind: "audio" | "video" | "photo";
+};
+export type Story = {
+  id: string;
+  book_id: string;
+  title: string;
+  prompt: string;
+  body: string;
+  transcript: string;
+  storyteller: string;
+  style: "first-person" | "third-person" | "transcript";
+  status: "draft" | "published";
+  position: number;
+  share_token?: string | null;
+  created_at: string;
+  updated_at: string;
+  media: Media[];
+  comment_count: number;
+};
+export type Question = {
+  id: string;
+  text: string;
+  category: string;
+  status: "queued" | "sent" | "answered";
+  token?: string;
+  votes: number;
+  voted: boolean;
+  story_id?: string;
+  expires_at: string;
+};
+export type Book = {
+  id: string;
+  title: string;
+  storyteller: string;
+  subtitle: string;
+  dedication: string;
+  cover_color: string;
+  role: "owner" | "editor" | "viewer";
+  recipient_email: string;
+  phone: string;
+  email_opt_in: boolean;
+  sms_opt_in: boolean;
+  reminder_day: number;
+  reminder_enabled: boolean;
+};
+export type AppState = {
+  user: { id: string; name: string; email: string };
+  books: Pick<Book, "id" | "title" | "storyteller" | "cover_color" | "role">[];
+  book: Book | null;
+  stories: Story[];
+  questions: Question[];
+  members: { id: string; name: string; email: string; role: string }[];
+  invitations: { id: string; role: string; email: string; token: string; expires_at: string }[];
+  capabilities: { email: boolean; sms: boolean; storage: boolean };
+};
