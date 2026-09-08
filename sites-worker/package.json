@@ -1,0 +1,8 @@
+{
+  "name": "heirloom-sites-entrypoint",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}
